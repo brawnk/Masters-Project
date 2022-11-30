@@ -1,6 +1,8 @@
 import keras
 from keras.models import Model
 from keras.layers import Conv2D, MaxPooling2D, Dense, Dropout, Activation, Flatten, Input, concatenate
+from keras.preprocessing.image import ImageDataGenerator
+#from keras.utils import plot_model
 
 imH = 500
 imW = 500
@@ -111,10 +113,9 @@ model = Model(inputs=[p0, p1, p2], outputs=predictions)
 model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 #model.summary()
 
-#from keras.utils import plot_model
 #plot_model(model, to_file='model.pdf', show_shapes=False)
 
-from keras.preprocessing.image import ImageDataGenerator
+
 
 train_datagen = ImageDataGenerator(rescale = 1./255,
                                    shear_range = 0.2,
